@@ -10,6 +10,8 @@
 #include "statistics.h"
 #include "utils.h"
 
+#include <big_number.h>
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -418,6 +420,18 @@ int main(void)
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 #endif
+
+    char a100[] = "43612987461293179";
+    char b100[] = "471895437891";
+
+    bString aa100 = bStringFromCString(a100);
+    bString bb100 = bStringFromCString(b100);
+
+    bString *b = (bString *)calloc(1, sizeof(bString));
+    add(&aa100, &bb100, &b);
+
+    bStringPrint(b);
+    bStringRelease(b);
 
     /*
      * rand() 是伪随机数生成器。

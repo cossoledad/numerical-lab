@@ -6,6 +6,58 @@
 
 ## Level 1：基础 C
 
+### 练习 0
+
+当前项目中新增了一个big_number的模块，用于简单使用C字符串实现大数相加（因为我们知道int、long都是有范围的，超过了范围就会溢出）。
+
+你需要：1、理解现有实现的原理；2、分析现有实现的不足；3、不借助任何辅助工具的前提下，重写现有实现；
+
+对于要求3重写现有实现，需要新增一个模块文件，并且按照如下的函数签名进行实现：
+
+```C
+typedef struct {
+    size_t size;
+    char *buffer; // 低位在前的十进制数字字符
+} aString;
+
+aString aStringCreate(size_t size);
+void aStringRelease(aString *b);
+aString aStringFromCString(const char *c);
+void aStringPrint(const aString *a);
+
+/**
+ * 十进制半加器 (Half Adder)
+ * 输入: 加数 a, b (字符 '0'-'9')
+ * 输出: *sum (本位和字符 '0'-'9')
+ * 返回: 进位字符 ('0' 或 '1')
+ */
+char halfAdder(char a, char b, char *sum);
+
+/**
+ * 十进制全加器 (Full Adder)
+ * 由两个半加器和一个或门级联组成：
+ * 1. HA1(a, b) -> sum1, carry1
+ * 2. HA2(sum1, cin) -> sum, carry2
+ * 3. cout = carry1 OR carry2 (十进制两数相加+进位最多为 9+9+1=19，两者进位互斥)
+ */
+char fullAdder(char a, char b, char cin, char *sum);
+
+/**
+ * 基于全加器的大数加法
+ */
+aString aStringAdd(const aString *a, const aString *b);
+
+
+
+// 需要能完成测试
+
+bString num1 = bStringFromCString("99999999999999999999");
+bString num2 = bStringFromCString("1");
+bString res = bStringAdd(&num1, &num2);
+bStringPrint(&res);
+```
+
+
 ### 练习 1
 
 修改积分模块，新增左矩形法：

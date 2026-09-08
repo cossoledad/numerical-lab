@@ -19,6 +19,7 @@ add_executable(numerical_lab
     src/statistics.c
     src/numeric_error.c
     src/utils.c
+    src/big_number.c
 )
 
 target_include_directories(numerical_lab PRIVATE include)

@@ -4,15 +4,15 @@
 
 ---
 
-## Level 1：基础 C
+## Level 0：基础语法
 
-### 练习 0
+### 练习 1
 
-当前项目中新增了一个big_number的模块，用于简单使用C字符串实现大数相加（因为我们知道int、long都是有范围的，超过了范围就会溢出）。
+当前项目中存在一个big_number的模块，用于简单使用C字符串实现大数相加（因为我们知道int、long都是有范围的，超过了范围就会溢出）。
 
-你需要：1、理解现有实现的原理；2、分析现有实现的不足；3、不借助任何辅助工具的前提下，重写现有实现；
+需要：1、理解现有实现；2、分析现有实现不足；3、不借助任何辅助工具的前提下重写现有实现；
 
-对于要求3重写现有实现，需要新增一个模块文件，并且按照如下的函数签名进行实现：
+对于要求3重写现有实现，需要设计新增一个模块文件，并且按照如下的函数签名进行实现：
 
 ```C
 typedef struct {
@@ -47,16 +47,20 @@ char fullAdder(char a, char b, char cin, char *sum);
  */
 aString aStringAdd(const aString *a, const aString *b);
 
-
-
 // 需要能完成测试
-
 bString num1 = bStringFromCString("99999999999999999999");
 bString num2 = bStringFromCString("1");
 bString res = bStringAdd(&num1, &num2);
 bStringPrint(&res);
 ```
 
+### 练习 2
+
+分析bList的实现，独立完成一个aList（使用单向List，即只记录一个Node的nxt指针）。
+
+---
+
+## Level 1：基础 C
 
 ### 练习 1
 

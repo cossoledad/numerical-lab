@@ -20,6 +20,7 @@ add_executable(numerical_lab
     src/numeric_error.c
     src/utils.c
     src/big_number.c
+    src/blist.c
 )
 
 target_include_directories(numerical_lab PRIVATE include)

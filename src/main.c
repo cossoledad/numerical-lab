@@ -11,6 +11,7 @@
 #include "utils.h"
 
 #include <big_number.h>
+#include <blist.h>
 
 #include <math.h>
 #include <stdio.h>
@@ -432,6 +433,13 @@ int main(void)
 
     bStringPrint(b);
     bStringRelease(b);
+
+
+    int a[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+    bList bl = bListFromArray(a, 10);
+    bList nbl = bListFromBList(bl);
+    bListForwardPrint(bl);
+    bListReversePrint(nbl);
 
     /*
      * rand() 是伪随机数生成器。

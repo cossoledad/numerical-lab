@@ -8,7 +8,7 @@
 
 ### 练习 1
 
-当前项目中存在一个big_number的模块，用于简单使用C字符串实现大数相加（因为我们知道int、long都是有范围的，超过了范围就会溢出）。
+当前项目中存在一个bnumber的模块，用于简单使用C字符串实现大数相加（因为我们知道int、long都是有范围的，超过了范围就会溢出）。
 
 需要：1、理解现有实现；2、分析现有实现不足；3、不借助任何辅助工具的前提下重写现有实现；
 
@@ -18,12 +18,12 @@
 typedef struct {
     size_t size;
     char *buffer; // 低位在前的十进制数字字符
-} aString;
+} aNumber;
 
-aString aStringCreate(size_t size);
-void aStringRelease(aString *b);
-aString aStringFromCString(const char *c);
-void aStringPrint(const aString *a);
+aNumber aNumberCreate(size_t size);
+void aNumberRelease(aNumber *b);
+aNumber aNumberFromCString(const char *c);
+void aNumberPrint(const aNumber *a);
 
 /**
  * 十进制半加器 (Half Adder)
@@ -45,13 +45,13 @@ char fullAdder(char a, char b, char cin, char *sum);
 /**
  * 基于全加器的大数加法
  */
-aString aStringAdd(const aString *a, const aString *b);
+aNumber aNumberAdd(const aNumber *a, const aNumber *b);
 
 // 需要能完成测试
-bString num1 = bStringFromCString("99999999999999999999");
-bString num2 = bStringFromCString("1");
-bString res = bStringAdd(&num1, &num2);
-bStringPrint(&res);
+aNumber num1 = aNumberFromCString("99999999999999999999");
+aNumber num2 = aNumberFromCString("1");
+aNumber res = aNumberAdd(&num1, &num2);
+aNumberPrint(&res);
 ```
 
 ### 练习 2

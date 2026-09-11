@@ -1,38 +1,38 @@
-#include <big_number.h>
+#include <bnumber.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-void bStringInit(bString *a, size_t s)
+void bNumberInit(bNumber *a, size_t s)
 {
     a->size = s;
     a->buffer = (char *)calloc(a->size, sizeof(char));
 }
-void bStringRelease(bString *a)
+void bNumberRelease(bNumber *a)
 {
     free(a->buffer);
     a->buffer = 0;
     a->size = 0;
 }
-void bStringExpansion(bString **a)
+void bNumberExpansion(bNumber **a)
 {
-    bString *b = (bString *)calloc(1, sizeof(bString));
-    bStringInit(b, (*a)->size + 1);
+    bNumber *b = (bNumber *)calloc(1, sizeof(bNumber));
+    bNumberInit(b, (*a)->size + 1);
     for (size_t i = 0; i < (*a)->size; i++)
     {
         b->buffer[i] = (*a)->buffer[i];
     }
-    bStringRelease(*a);
+    bNumberRelease(*a);
     *a = b;
 }
 
-void bStringSwap(bString **a, bString **b)
+void bNumberSwap(bNumber **a, bNumber **b)
 {
-    bString *aa = *a;
+    bNumber *aa = *a;
     *a = *b;
     *b = aa;
 }
 
-void bStringPrint(bString *a)
+void bNumberPrint(bNumber *a)
 {
     for (size_t i = a->size; i > 0; i--)
     {
@@ -41,7 +41,7 @@ void bStringPrint(bString *a)
     printf("\n");
 }
 
-bString bStringFromCString(char *c)
+bNumber bNumberFromCString(char *c)
 {
     char *i = c;
     size_t s = 0;
@@ -50,8 +50,8 @@ bString bStringFromCString(char *c)
         s++;
         i++;
     }
-    bString b;
-    bStringInit(&b, s);
+    bNumber b;
+    bNumberInit(&b, s);
     for (size_t index = 0; index < s; index++)
     {
         b.buffer[s - 1 - index] = *(c + index);
@@ -84,7 +84,7 @@ char fullAdder(char *a, char *b, char *d, char *c)
     return (j1 || j2) + 48;
 }
 
-void add(bString *a, bString *b, bString **out)
+void add(bNumber *a, bNumber *b, bNumber **out)
 {
 
     char d = 48;
@@ -92,9 +92,9 @@ void add(bString *a, bString *b, bString **out)
 
     if (a->size < b->size)
     {
-        bStringSwap(&a, &b);
+        bNumberSwap(&a, &b);
     }
-    bStringInit((*out), a->size);
+    bNumberInit((*out), a->size);
 
     for (size_t i = 0; i < b->size; i++)
     {
@@ -106,7 +106,7 @@ void add(bString *a, bString *b, bString **out)
     }
     if (d == '1')
     {
-        bStringExpansion(out);
+        bNumberExpansion(out);
         (*out)->buffer[(*out)->size - 1] = '1';
     }
 }

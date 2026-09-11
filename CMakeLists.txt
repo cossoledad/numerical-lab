@@ -19,7 +19,7 @@ add_executable(numerical_lab
     src/statistics.c
     src/numeric_error.c
     src/utils.c
-    src/big_number.c
+    src/bnumber.c
     src/blist.c
 )
 

@@ -10,7 +10,7 @@
 #include "statistics.h"
 #include "utils.h"
 
-#include <big_number.h>
+#include <bnumber.h>
 #include <blist.h>
 
 #include <math.h>
@@ -425,14 +425,14 @@ int main(void)
     char a100[] = "43612987461293179";
     char b100[] = "471895437891";
 
-    bString aa100 = bStringFromCString(a100);
-    bString bb100 = bStringFromCString(b100);
+    bNumber aa100 = bNumberFromCString(a100);
+    bNumber bb100 = bNumberFromCString(b100);
 
-    bString *b = (bString *)calloc(1, sizeof(bString));
+    bNumber *b = (bNumber *)calloc(1, sizeof(bNumber));
     add(&aa100, &bb100, &b);
 
-    bStringPrint(b);
-    bStringRelease(b);
+    bNumberPrint(b);
+    bNumberRelease(b);
 
 
     int a[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};

@@ -21,6 +21,7 @@ add_executable(numerical_lab
     src/utils.c
     src/bnumber.c
     src/blist.c
+    src/bstring.c
 )
 
 target_include_directories(numerical_lab PRIVATE include)

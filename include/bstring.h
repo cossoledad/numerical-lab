@@ -11,6 +11,9 @@ typedef struct
 } bString;
 
 bString bStringCreate();
+void bStringRelease(bString *);
+void bStringResize(bString *, size_t);
+
 bString bStringFromCString(char *cs);
 
 size_t cStringSize(char *cs);

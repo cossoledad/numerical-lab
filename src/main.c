@@ -12,6 +12,7 @@
 
 #include <bnumber.h>
 #include <blist.h>
+#include <bstring.h>
 
 #include <math.h>
 #include <stdio.h>
@@ -434,12 +435,21 @@ int main(void)
     bNumberPrint(b);
     bNumberRelease(b);
 
-
     int a[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
     bList bl = bListFromArray(a, 10);
     bList nbl = bListFromBList(bl);
     bListForwardPrint(bl);
     bListReversePrint(nbl);
+
+    char cst[] = "1234567890qwertyuiop";
+    bString bst = bStringFromCString(cst);
+    bString bst1 = bStringCreate();
+    bStringAppendChar(&bst1, 'a');
+    bStringAppendCString(&bst1, cst);
+    bStringAppendBString(&bst1, bst);
+
+    bStringPrint(bst);
+    bStringPrint(bst1);
 
     /*
      * rand() 是伪随机数生成器。

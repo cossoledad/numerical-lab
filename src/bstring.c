@@ -91,6 +91,34 @@ void bStringAppendBString(bString *bsp, bString cbsp)
     }
 }
 
+char bStringAt(bString bs, size_t sn)
+{
+    if (sn >= bs.size)
+    {
+        return '\0';
+    }
+    else
+    {
+        return bs.data[sn];
+    }
+}
+
+bString bStringSlice(bString bs, size_t fn, size_t sn)
+{
+    if (fn >= sn || fn > bs.size)
+    {
+        return bStringCreate();
+    }
+    sn = sn > bs.size ? bs.size : sn;
+    bString nbs = bStringCreate();
+    bStringResize(&nbs, sn - fn);
+    for (size_t i = 0; i < nbs.size; i++)
+    {
+        nbs.data[i] = bs.data[fn + i];
+    }
+    return nbs;
+}
+
 void bStringPrint(bString bs)
 {
     for (size_t i = 0; i < bs.size; i++)

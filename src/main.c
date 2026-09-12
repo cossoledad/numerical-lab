@@ -451,6 +451,10 @@ int main(void)
     bStringPrint(bst);
     bStringPrint(bst1);
 
+    printf("%c\n", bStringAt(bst1, 0));
+
+    bStringPrint(bStringSlice(bst1, 1, bst1.size));
+
     /*
      * rand() 是伪随机数生成器。
      * 使用当前时间作为种子，使每次 Monte Carlo 结果略有不同。

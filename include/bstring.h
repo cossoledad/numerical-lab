@@ -22,6 +22,11 @@ void bStringAppendChar(bString *bsp, char);
 void bStringAppendCString(bString *bsp, char *cs);
 void bStringAppendBString(bString *bsp, bString);
 
+char bStringAt(bString, size_t);
+
+// 左闭右开
+bString bStringSlice(bString, size_t, size_t);
+
 void bStringPrint(bString bs);
 
 #endif
